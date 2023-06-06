@@ -15,6 +15,9 @@
             <input class="btn add-block" type="button" value="Adicionar Bloco">
             <input class="btn remove-block" type="button" value="Remover Bloco">
         </div>
+        <div class="change-flex">
+
+        </div>
         <div class="flex-props"></div>
     </div>
     <!-- Aqui vai um container gerado dinamicamente -->
@@ -70,25 +73,31 @@
             justify-content: space-around;
             gap: 10px;
             margin-top: 100px;
-            border: 1px solid;
+            border: 1px solid rgb(139, 159, 196);
             padding: 10px;
             border-radius: 10px;
             margin: 50px;
             width: 80vw;
             margin-left: 50%;
             transform: translateX(-50%);
+            transition: 400ms;
+
         }
 
             .child {
 
-                flex: 1;
+                
                 width: 200px;
                 height: 200px;
                 border-radius: 10px;
                 background-color: #277ae6;
                 box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.466);
-                
+                transition: 400ms;
+                opacity: 1;
+
             }
+
+            
 
     </style>
 
@@ -104,7 +113,7 @@
         body.appendChild(container);
         
         // Cria children
-        let blocksNumber = 1;
+        let blocksNumber = 2;
 
         const addBlock = document.querySelector('.add-block');
         const removeBlock = document.querySelector('.remove-block');
@@ -129,12 +138,15 @@
 
             container.innerHTML = '';
             for (let i = 0; i < blocksNumber; i++) {
-
                 const child = document.createElement('div');
                 child.classList.add('child');
                 container.appendChild(child);
-
-            }
+                child.style.opacity = '0'
+                setTimeout(() => {
+                    child.style.opacity = '1';
+                }, 10);
+            }   
+                  
 
         }
 
